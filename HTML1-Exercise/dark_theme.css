@@ -59,14 +59,12 @@ tr:hover {
     background-color: rgb(121, 118, 118) !important;
 }
 
-nav ul li {
-    display: inline;
-}
 
-nav ul li:first-child a {
+
+.nav-items ul li:first-child a {
     text-decoration: underline;
 }
-nav ul li:not(:first-child) a {
+.nav-items ul li:not(:first-child) a {
     text-decoration: none;
 }
 
@@ -79,7 +77,7 @@ tr:nth-child(even) {
 }
 ::-moz-selection {
     background: yellow; 
-
+}
 body a:hover {
     cursor: pointer;
 }
@@ -94,4 +92,104 @@ input[type=text] {
 
 input[name=message] {
     height: 50px;
+}
+h1, h2 {
+    color: var(--slate-50, #F8FAFC);
+    text-align: justify;
+    font-family: Roboto;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 45px; /* 125% */
+}
+/* https://www.figma.com/community/file/1163921678095762153 */
+.hamburger-icon {
+    cursor: pointer;
+    display: block;
+    position: relative;
+}
+
+/* Style for the bars */
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+
+.hamburger-icon:hover .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-icon:hover .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-icon:hover .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.nav-items {
+    display: none;
+    
+}
+.hamburger-icon:hover + .nav-items {
+    display: block;
+}
+.nav-items:hover {
+    display: block;
+}
+
+
+/* Style for the links */
+.nav-items a {
+    text-decoration: none;
+    color: #85f108; 
+}
+/* Style for the active state of links*/
+.nav-items a:hover {
+    color: #27ae60; 
+}
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 10px;
+    height: 30px;
+    background-color: #1877f2; /* Facebook blue color */
+    margin: 0 5px;
+    animation: loading 1.2s infinite; /* Animation properties */
+}
+
+.bar1 {
+    animation-delay: 0.2s;
+}
+
+.bar2 {
+    animation-delay: 0.4s;
+}
+
+.bar3 {
+    animation-delay: 0.6s;
+}
+
+/* Website content styles (hidden initially) */
+.content {
+    display: none;
+}
+
+/* Keyframes for loader animation */
+@keyframes loading {
+    0%, 100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(1.5);
+    }
 }
