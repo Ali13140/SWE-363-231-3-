@@ -23,3 +23,75 @@ footer {
     background-color: #1a1a1a;
     color: #f5f5f5;
 }
+th {
+    text-transform: uppercase;
+}
+
+a {
+    color: green;
+}
+
+td.top {
+    background-color: #b76e79; 
+}
+
+em {
+    background-color: blue;
+}
+
+#the_most_important {
+    text-transform: uppercase;
+    background-color: gold;
+}
+h2 {
+    font-family: sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-transform: capitalize;
+}
+
+h2 + p::first-letter {
+    font-size: x-large;
+}
+
+tr:hover {
+    background-color: rgb(121, 118, 118) !important;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li:first-child a {
+    text-decoration: underline;
+}
+nav ul li:not(:first-child) a {
+    text-decoration: none;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+::selection {
+    background: yellow;
+}
+::-moz-selection {
+    background: yellow; 
+
+body a:hover {
+    cursor: pointer;
+}
+
+input {
+    height: 20px;
+}
+
+input[type=text] {
+    border-color: lightgray;
+}
+
+input[name=message] {
+    height: 50px;
+}
