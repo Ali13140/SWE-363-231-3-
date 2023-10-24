@@ -5,10 +5,10 @@
     <meta name="description" content="KFUPM blog.">
     <meta name="keywords" content="KFUPM, Blog">
     <meta name="author" content="Ali Almomen">
-     <link rel=“stylesheet” href=“https://fonts.googleapis.com/icon?family=Material+Icons”> 
-     <link rel=“stylesheet” href=“https://code.getmdl.io/1.3.0/material.indigo-pink.min.css”> 
+     <link rel=“stylesheet” href=“https://fonts.googleapis.com/icon?family=Material+Icons”> <link rel=“stylesheet” href=“https://code.getmdl.io/1.3.0/material.indigo-pink.min.css”> 
     <script defer src=“https://code.getmdl.io/1.3.0/material.min.js”></script>
     <link rel="stylesheet" type="text/css" href="dark_theme.css">
+
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -16,51 +16,76 @@
     <header >
         <h1>Welcome to My KFUPM Blog!</h1>
         <h2>This is a <em id="the_most_important">KFUPM blog</em> where I share my thoughts and experiences about courses I finished.</h2>
+
     </header>
 
     <main >
         <div class="watermark">
             <img src="cover.jpg" alt="Cover Image"><br>
+
         </div> 
+    <h2>Ranking My Courses</h2>
+    <table border="1">
+        <tr>
+            <th> Course</th>
+            <th>Rank</th>
+            <th>First course taken </th>
+            <th>Last course taken</th>
+        </tr>
+    </table>
+    <nav>
+        <div class="navbar">
+            <div class="hamburger-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        <ul class="nav-items">
+            <li><a href="FirstPost.html">SWE363 journey</a> </li>
+            <li><a href="Form.html">Send us a comment</a> </li>
+            <li><a href="ContactUs.html">Contact Us</a> </li>
+            <li><a href="MainPage -ar.html">العربية</a></li>
+            <li><a href="ttt.html">ttt</a></li>
 
-        <!-- The table where the courses will be added -->
-        <table border="1">
-            <!-- Table headers -->
-            <tr>
-                <th> Course</th>
-                <th>Rank</th>
-                <th>First course taken </th>
-                <th>Last course taken</th>
-            </tr>
+        </ul>
+    </div>
+    </nav>
+  
+    <footer >
+    SWE363 
 
-            <!-- The courses will be added here by the JavaScript code -->
-        </table>
+    </footer>
+</main>
 
+</div>
+<script>
+    let courses = [
+        {course: 'ICS', rank: '#1', firstCourseTaken: 'ICS104', lastCourseTaken: 'ICS353'},
+        {course: 'COE', rank: '#2', firstCourseTaken: 'COE202', lastCourseTaken: 'COE292'},
+        {course: 'SWE', rank: '#3', firstCourseTaken: 'SWE206', lastCourseTaken: 'SWE363'},
+        {course: 'ISE', rank: '#4', firstCourseTaken: 'ISE291', lastCourseTaken: 'ISE291'}
+    ];
 
-    </main>
+    let table = document.querySelector('table');
 
-    <script>
-        let courses = [
-            {course: 'ICS', rank: '#1', firstCourseTaken: 'ICS104', lastCourseTaken: 'ICS353'},
-            {course: 'COE', rank: '#2', firstCourseTaken: 'COE202', lastCourseTaken: 'COE292'},
-            {course: 'SWE', rank: '#3', firstCourseTaken: 'SWE206', lastCourseTaken: 'SWE363'},
-            {course: 'ISE', rank: '#4', firstCourseTaken: 'ISE291', lastCourseTaken: 'ISE291'}
-        ];
-
-        let table = document.querySelector('table');
-
-        courses.forEach(course => {
-            let row = document.createElement('tr');
-            
-            Object.values(course).forEach(text => {
-                let cell = document.createElement('td');
-                cell.textContent = text;
-                row.appendChild(cell);
-            });
-            
-            table.appendChild(row);
+    courses.forEach(course => {
+        let row = document.createElement('tr');
+        
+        Object.values(course).forEach(text => {
+            let cell = document.createElement('td');
+            cell.textContent = text;
+            row.appendChild(cell);
         });
+        
+        table.appendChild(row);
+    });
+</script>
+ <script>
+        // JavaScript to hide the loader and show the content after 2 seconds
+        setTimeout(function() {
+            document.querySelector('.loader').style.display = 'none';
+            document.querySelector('.content').style.display = 'block';
+        }, 2000);
     </script>
-
 </body>
 </html>

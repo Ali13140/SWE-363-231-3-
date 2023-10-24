@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tic-Tac-Toe</title>
     <style>
         body {
             display: flex;
@@ -34,7 +34,6 @@
             background-color: #00f; 
         }
 
-
         .cell:hover {
             background-color: blanchedalmond;
         }
@@ -54,116 +53,116 @@
     <!-- Board -->
     <div class="board">
         <div class="row">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
+            <div class="cell" id="cell-0"></div>
+            <div class="cell" id="cell-1"></div>
+            <div class="cell" id="cell-2"></div>
         </div>
         <div class="row">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
+            <div class="cell" id="cell-3"></div>
+            <div class="cell" id="cell-4"></div>
+            <div class="cell" id="cell-5"></div>
         </div>
         <div class="row">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
+            <div class="cell" id="cell-6"></div>
+            <div class="cell" id="cell-7"></div>
+            <div class="cell" id="cell-8"></div>
         </div>
-        <script>
+    </div>
+    <p id="instructions">Use the number keys (1-9) to make your move. Press the "Reset" button to start a new game.</p>
 
-            // decided which turn is it
-            let turn = "X"
-            let gameEnded = false
+    <script>
+        // Initialize the game state
+        let turn = "X";
+        let gameEnded = false;
 
-            // when we click on a cell add the letter 
-            let board = document.getElementsByClassName("board")[0]
-            board.addEventListener("click", cellClicked)
+        // Add click event listeners to the cells
+        let cells = document.getElementsByClassName("cell");
+        for (let i = 0; i < cells.length; i++) {
+            cells[i].addEventListener("click", () => makeMove(i));
+        }
 
-            function cellClicked(event) {
-                let cell = event.target;
-                // Check if the cell is already filled
-                if (cell.innerText === '') {
-                    // Add the letter
-                    cell.innerText = turn;
-                    // Add a class for styling
-                    cell.classList.add(turn);
-            
-                    // Check for a win
-                    if (checkWin()) {
-                        // If there's a win, end the game
+        function makeMove(cellIndex) {
+            const cell = document.getElementById('cell-' + cellIndex);
+
+            if (cell.innerText === '') {
+                // Add the letter
+                cell.innerText = turn;
+                // Add a class for styling
+                cell.classList.add(turn);
+
+                // Check for a win
+                if (checkWin()) {
+                    // If there's a win, end the game
+                    gameEnded = true;
+                    document.querySelector("#turn").innerText = "Player " + turn + " wins!";
+                } else {
+                    // If there's no win, check for a draw
+                    let allFilled = true;
+                    for (let i = 0; i < cells.length; i++) {
+                        if (cells[i].innerText === '') {
+                            allFilled = false;
+                            break;
+                        }
+                    }
+                    if (allFilled) {
+                        // If all cells are filled, it's a draw
                         gameEnded = true;
-                        document.querySelector("#turn").innerText = "Player " + turn + " wins!";
+                        document.querySelector("#turn").innerText = "Draw";
                     } else {
-                        // If there's no win, check for a draw
-                        let cells = document.getElementsByClassName('cell');
-                        let allFilled = true;
-                        for (let i = 0; i < cells.length; i++) {
-                            if (cells[i].innerText === '') {
-                                allFilled = false;
-                                break;
-                            }
-                        }
-                        if (allFilled) {
-                            // If all cells are filled, it's a draw
-                            gameEnded = true;
-                            document.querySelector("#turn").innerText = "Draw";
-                        } else {
-                            // If it's not a draw, change the turn
-                            turn = turn === "X" ? "O" : "X";
-                            document.querySelector("#turn span").innerText = turn;
-                        }
+                        // If it's not a draw, change the turn
+                        turn = turn === "X" ? "O" : "X";
+                        document.querySelector("#turn span").innerText = turn;
                     }
                 }
             }
-            function checkWin() {
-                // Get all the cells
-                let cells = document.getElementsByClassName('cell');
-            
-                // Define the winning combinations
-                let winningCombinations = [
-                    [0, 1, 2], // Top row
-                    [3, 4, 5], // Middle row
-                    [6, 7, 8], // Bottom row
-                    [0, 3, 6], // Left column
-                    [1, 4, 7], // Middle column
-                    [2, 5, 8], // Right column
-                    [0, 4, 8], // Diagonal from top-left to bottom-right
-                    [2, 4, 6]  // Diagonal from top-right to bottom-left
-                ];
-            
-                // Check each combination
-                for (let i = 0; i < winningCombinations.length; i++) {
-                    let [a, b, c] = winningCombinations[i];
-                    if (cells[a].innerText && cells[a].innerText === cells[b].innerText && cells[a].innerText === cells[c].innerText) {
-                        return true;
-                    }
+        }
+
+        function checkWin() {
+            // Define the winning combinations
+            let winningCombinations = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8],  // Rows
+                [0, 3, 6], [1, 4, 7], [2, 5, 8],  // Columns
+                [0, 4, 8], [2, 4, 6]  // Diagonals
+            ];
+
+            // Check each combination
+            for (let i = 0; i < winningCombinations.length; i++) {
+                let [a, b, c] = winningCombinations[i];
+                if (cells[a].innerText && cells[a].innerText === cells[b].innerText && cells[a].innerText === cells[c].innerText) {
+                    return true;
                 }
-            
-                // If no winning combination is found, return false
-                return false;
             }
-        var resetButton = document.getElementById('reset');
+
+            // If no winning combination is found, return false
+            return false;
+        }
 
         // Add a click event listener to the reset button
+        var resetButton = document.getElementById('reset');
         resetButton.addEventListener('click', function() {
-            // Get all the cells
-            var cells = document.getElementsByClassName('cell');
-        
-            // Loop through each cell and clear its text content and class
-            for (var i = 0; i < cells.length; i++) {
+            // Clear the board and reset the game
+            for (let i = 0; i < cells.length; i++) {
                 cells[i].innerText = '';
                 cells[i].className = 'cell';
             }
-        
-            // Reset the turn and gameEnded variables
+
             turn = 'X';
             gameEnded = false;
-        
-            // Update the turn display
+
             document.querySelector("#turn").innerHTML = "Now it's is <span>" + turn + "</span> turn";
         });
 
-        </script>
-    </div>
+        // Add keyboard event listener to the whole document
+        document.addEventListener('keydown', function(event) {
+            if (!gameEnded) {
+                if (event.key >= '1' && event.key <= '9') {
+                    // If a number key (1-9) is pressed, make a move in the corresponding cell
+                    const cellIndex = parseInt(event.key) - 1; // Convert 1-9 to array index (0-8)
+                    makeMove(cellIndex);
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
