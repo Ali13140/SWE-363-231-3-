@@ -40,34 +40,7 @@
                 <th>المادة الاولئ  </th>
                 <th> المادة الحالية  </th>
         </tr>
-        <tr>
-            <td class="top">ICS</td>
-            <td class="top">#1</td>
-            <td class="top">ICS104</td>
-            <td class="top">ICS353</td>
-
-        </tr>
-        <tr>
-            <td >COE</td>
-            <td>#2</td>
-            <td>COE202</td>
-            <td>COE292</td>
-
-        </tr>
-        <tr>
-            <td >SWE</td>
-            <td>#3</td>
-            <td>SWE206</td>
-            <td>SWE363</td>
-
-        </tr>
-        <tr>
-            <td >ISE</td>
-            <td>#4</td>
-            <td>ISE291</td>
-            <td>ISE291</td>
-
-        </tr>
+       
     </table>
     <nav>
         <div class="navbar">
@@ -99,5 +72,28 @@
         document.querySelector('.content').style.display = 'block';
     }, 2000);
 </script>
+<script>
+
+let courses = [
+            {course: 'ICS', rank: '#1', firstCourseTaken: 'ICS104', lastCourseTaken: 'ICS353'},
+            {course: 'COE', rank: '#2', firstCourseTaken: 'COE202', lastCourseTaken: 'COE292'},
+            {course: 'SWE', rank: '#3', firstCourseTaken: 'SWE206', lastCourseTaken: 'SWE363'},
+            {course: 'ISE', rank: '#4', firstCourseTaken: 'ISE291', lastCourseTaken: 'ISE291'}
+        ];
+
+        let table = document.querySelector('table');
+
+        courses.forEach(course => {
+            let row = document.createElement('tr');
+            
+            Object.values(course).forEach(text => {
+                let cell = document.createElement('td');
+                cell.textContent = text;
+                row.appendChild(cell);
+            });
+            
+            table.appendChild(row);
+        });
+    </script>
 </body>
 </html>
