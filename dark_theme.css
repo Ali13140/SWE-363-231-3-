@@ -1,0 +1,236 @@
+body {
+    background-color: #2b2b2b;
+    color: #f5f5f5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #f5f5f5;
+}
+
+p {
+    color: #f5f5f5;
+}
+
+a {
+    color: #9acd32;
+}
+
+nav {
+    background-color: #1a1a1a;
+}
+
+footer {
+    background-color: #1a1a1a;
+    color: #f5f5f5;
+}
+th {
+    text-transform: uppercase;
+}
+
+a {
+    color: green;
+}
+
+td.top {
+    background-color: #b76e79; 
+}
+
+em {
+    background-color: blue;
+}
+
+#the_most_important {
+    text-transform: uppercase;
+    background-color: gold;
+}
+h2 {
+    font-family: sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-transform: capitalize;
+}
+
+h2 + p::first-letter {
+    font-size: x-large;
+}
+
+tr:hover {
+    background-color: rgb(121, 118, 118) !important;
+}
+
+
+
+.nav-items ul li:first-child a {
+    text-decoration: underline;
+}
+.nav-items ul li:not(:first-child) a {
+    text-decoration: none;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+::selection {
+    background: yellow;
+}
+::-moz-selection {
+    background: yellow; 
+}
+body a:hover {
+    cursor: pointer;
+}
+
+input {
+    height: 20px;
+}
+
+input[type=text] {
+    border-color: lightgray;
+}
+
+input[name=message] {
+    height: 50px;
+}
+h1, h2 {
+    color: var(--slate-50, #F8FAFC);
+    text-align: justify;
+    font-family: Roboto;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 45px; /* 125% */
+}
+/* https://www.figma.com/community/file/1163921678095762153 */
+.hamburger-icon {
+    cursor: pointer;
+    display: block;
+    position: relative;
+}
+
+/* Style for the bars */
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+
+.hamburger-icon:hover .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-icon:hover .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-icon:hover .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.nav-items {
+    display: none;
+    
+}
+.hamburger-icon:hover + .nav-items {
+    display: block;
+}
+.nav-items:hover {
+    display: block;
+}
+
+
+/* Style for the links */
+.nav-items a {
+    text-decoration: none;
+    color: #85f108; 
+}
+/* Style for the active state of links*/
+.nav-items a:hover {
+    color: #27ae60; 
+}
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 10px;
+    height: 30px;
+    background-color: #1877f2; /* Facebook blue color */
+    margin: 0 5px;
+    animation: loading 1.2s infinite; /* Animation properties */
+}
+
+.bar1 {
+    animation-delay: 0.2s;
+}
+
+.bar2 {
+    animation-delay: 0.4s;
+}
+
+.bar3 {
+    animation-delay: 0.6s;
+}
+
+/* Website content styles (hidden initially) */
+.content {
+    display: none;
+}
+
+/* Keyframes for loader animation */
+@keyframes loading {
+    0%, 100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(1.5);
+    }
+}
+.watermark {
+    position: relative;
+    display: inline-block;
+}
+
+.watermark::after {
+    content: "A.A";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.5;
+    background-color: rgb(0, 0, 0); /* Optional: for better visibility */
+}
+/* phone version*/
+@media only screen and (max-width: 600px) {
+    body {
+        margin: 10px;
+        padding: 10px;    
+    }
+
+    h1, h2 {
+        font-size: 24px; 
+        line-height: 30px; 
+        margin: 10px 0;
+
+    }
+
+    .nav-items {
+        display: block; 
+        padding: 10px 0;
+
+    }
+
+    .hamburger-icon {
+        display: none; 
+    }
+    #signature {
+        border: 1px solid #000;
+        background-color: #fff;
+    }
+}
