@@ -60,11 +60,33 @@
 
 </div>
 <script>
+    class BlogPost {
+        constructor(title, content) {
+            this.title = title;
+            this.content = content;
+        }
+    }
+
+    class Course {
+        constructor(name, rank, firstCourseTaken, lastCourseTaken) {
+            this.name = name;
+            this.rank = rank;
+            this.firstCourseTaken = firstCourseTaken;
+            this.lastCourseTaken = lastCourseTaken;
+        }
+    }
+
+    let blogPosts = [
+        new BlogPost('Welcome to My KFUPM Blog!', 'This is a KFUPM blog where I share my thoughts and experiences about courses I finished.'),
+        // Add more blog posts here
+    ];
+
     let courses = [
-        {course: 'ICS', rank: '#1', firstCourseTaken: 'ICS104', lastCourseTaken: 'ICS353'},
-        {course: 'COE', rank: '#2', firstCourseTaken: 'COE202', lastCourseTaken: 'COE292'},
-        {course: 'SWE', rank: '#3', firstCourseTaken: 'SWE206', lastCourseTaken: 'SWE363'},
-        {course: 'ISE', rank: '#4', firstCourseTaken: 'ISE291', lastCourseTaken: 'ISE291'}
+        new Course('ICS', '#1', 'ICS104', 'ICS353'),
+        new Course('COE', '#2', 'COE202', 'COE292'),
+        new Course('SWE', '#3', 'SWE206', 'SWE363'),
+        new Course('ISE', '#4', 'ISE291', 'ISE291'),
+        // Add more courses here
     ];
 
     let table = document.querySelector('table');
@@ -80,7 +102,8 @@
         
         table.appendChild(row);
     });
-
+</script>
+<script>
     const apiKey = '9e876806c03d5117b5d125a2e256fe47';
     const city = 'Dhahran';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
