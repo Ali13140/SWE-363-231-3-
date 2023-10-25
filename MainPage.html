@@ -91,7 +91,7 @@
 
     let table = document.querySelector('table');
 
-    courses.forEach(course => {
+    ccourses.map(course => {
         let row = document.createElement('tr');
         
         Object.values(course).forEach(text => {
@@ -102,6 +102,7 @@
         
         table.appendChild(row);
     });
+    
 </script>
 <script>
     const apiKey = '9e876806c03d5117b5d125a2e256fe47';
