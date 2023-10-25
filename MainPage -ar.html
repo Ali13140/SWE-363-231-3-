@@ -95,6 +95,86 @@ let courses = [
             
             table.appendChild(row);
         });
+
+        const apiKey = '9e876806c03d5117b5d125a2e256fe47';
+        const city = 'Dhahran';
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+    
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const tempInKelvin = data.main.temp;
+                const tempInCelsius = tempInKelvin - 273.15;
+                const weatherDiv = document.createElement('div');
+                weatherDiv.textContent = `Current temperature in ${city}: ${tempInCelsius.toFixed(2)}°C`;
+                weatherDiv.style.position = 'fixed';
+                weatherDiv.style.top = '10px';
+                weatherDiv.style.right = '10px';
+        
+            })
+            .catch(error => console.error('Error:', error));
+    
     </script>
+    <script>
+        let scene, camera, renderer, shape;
+        let idleTime = 0;
+
+        function init() {
+            scene = new THREE.Scene();
+
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+
+            renderer = new THREE.WebGLRenderer({antialias: true});
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.domElement.style.position = 'fixed';
+            renderer.domElement.style.top = 0;
+            document.body.appendChild(renderer.domElement);
+
+            const geometryTypes = [
+                new THREE.BoxGeometry(1, 1, 1), 
+                new THREE.SphereGeometry(1, 32, 32), 
+                new THREE.ConeGeometry(1, 1, 32) 
+            ];
+            const geometry = geometryTypes[Math.floor(Math.random() * geometryTypes.length)];
+            const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+            shape = new THREE.Mesh(geometry, material);
+            scene.add(shape);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            shape.rotation.x += 0.01;
+            shape.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        }
+
+        function checkIdleTime() {
+            idleTime++;
+            if (idleTime > 60) { 
+                init();
+                animate();
+                document.onmousemove = stopScreensaver;
+                document.onkeypress = stopScreensaver;
+                idleTime = 0; // Reset idle time
+            }
+        }
+
+        function stopScreensaver() {
+            document.body.removeChild(renderer.domElement);
+            document.onmousemove = null;
+            document.onkeypress = null;
+        }
+
+        let idleInterval = setInterval(checkIdleTime, 1000);
+
+        // Reset the idle time on mouse move or key press
+        document.onmousemove = document.onkeypress = function() {
+            idleTime = 0;
+        };
+    </script>
+
 </body>
 </html>
