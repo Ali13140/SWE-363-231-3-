@@ -79,6 +79,21 @@
         
         table.appendChild(row);
     });
+
+    const apiKey = '9e876806c03d5117b5d125a2e256fe47';
+    const city = 'Dhahran';
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const temp = data.main.temp;
+            const weatherDiv = document.createElement('div');
+            weatherDiv.textContent = `Current temperature in ${city}: ${temp}K`;
+            document.body.appendChild(weatherDiv);
+        })
+        .catch(error => console.error('Error:', error));
+
 </script>
  <script>
         // JavaScript to hide the loader and show the content after 2 seconds
