@@ -7,6 +7,9 @@
     <meta name="author" content="علي المؤمن">
     <link rel=“stylesheet” href=“https://fonts.googleapis.com/icon?family=Material+Icons”> <link rel=“stylesheet” href=“https://code.getmdl.io/1.3.0/material.indigo-pink.min.css”> 
     <script defer src=“https://code.getmdl.io/1.3.0/material.min.js”></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <head>
         <link rel="stylesheet" type="text/css" href="dark_theme.css">
     </head>
@@ -61,6 +64,7 @@
     </nav>
   
     <footer>
+        <div id="react"></div>
 
     </footer>
 </div>
@@ -175,6 +179,37 @@ let courses = [
             idleTime = 0;
         };
     </script>
-
+    <script type="text/babel">
+        class SimpleButton extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {message:null};
+    
+                this.handleClick = this.handleClick.bind(this);
+            }
+    
+            handleClick() {
+                this.setState(state => ({
+                    message: "You clicked the button!"
+                }));
+            }
+    
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.handleClick}>
+                            This button was made by React
+                        </button>
+                        <p>{this.state.message}</p>
+                    </div>
+                );
+            }
+        }
+    
+        ReactDOM.render(
+            <SimpleButton />,
+            document.getElementById('react')
+        );
+       </script>
 </body>
 </html>
